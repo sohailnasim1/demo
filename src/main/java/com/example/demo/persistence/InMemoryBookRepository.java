@@ -9,10 +9,10 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.domain.Book;
 import com.example.demo.domain.BookRepository;
 
-@Repository
-public class InMemoryBookRepository implements BookRepository {
+//@Repository
+public class InMemoryBookRepository{// implements BookRepository {
 	private static final Map<String, Book> books = new ConcurrentHashMap<>();
-	@Override
+	/**@Override
 	public Iterable<Book> findAll() {
 		return books.values();
 	}
@@ -37,6 +37,6 @@ public class InMemoryBookRepository implements BookRepository {
 	public Book save(Book book) {
 		books.put(book.isbn(), book);
 		return book;
-	}
+	}*/
 
 }

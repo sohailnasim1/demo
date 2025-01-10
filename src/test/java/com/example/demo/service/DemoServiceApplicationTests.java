@@ -16,7 +16,7 @@ public class DemoServiceApplicationTests {
 
 	@Test
 	void whenPostRequestBookCreated() {
-		var expectedBook = new Book("1231231231", "Title", "Author", 9.90);
+		var expectedBook = Book.of("1231231231", "Title", "Author", 9.90);
 		client.post().uri("/books").bodyValue(expectedBook).exchange().expectStatus().isCreated().expectBody(Book.class)
 				.value(actualBook -> {
 					assertThat(actualBook).isNotNull();

@@ -21,13 +21,13 @@ public class BookValidationTest {
 
 	@Test
 	void testForAllValidFields() {
-		Set<ConstraintViolation<Book>> violations = validator.validate(new Book("1234567890", "Title", "Author", 9.90));
+		Set<ConstraintViolation<Book>> violations = validator.validate(Book.of("1234567890", "Title", "Author", 9.90));
 		assertThat(violations).isEmpty();
 	}
 	
 	@Test
 	void testForInvalidFields() {
-		Set<ConstraintViolation<Book>> violations = validator.validate(new Book("123456789a", "Title", "Author", 9.90));
+		Set<ConstraintViolation<Book>> violations = validator.validate(Book.of("123456789a", "Title", "Author", 9.90));
 		assertThat(violations).hasSize(1);
 		assertThat(violations.iterator().next().getMessage()).isEqualTo("The ISBN format must be valid.");
 	}
